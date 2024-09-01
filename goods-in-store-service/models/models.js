@@ -22,5 +22,5 @@ const Stock = sequelize.define('stock', {
   order_quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
 }, { timestamps: false });
 
-Stock.HasMany(Product);
-Stock.HasOne(Store);
+Stock.hasMany(Product);
+Stock.hasOne(Store);
