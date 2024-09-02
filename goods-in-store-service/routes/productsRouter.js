@@ -8,6 +8,7 @@ const ProductsController = require('../controllers/productsController');
 //     - plu
 
 router.post('/', ProductsController.create);
+
 router.get('/', ProductsController.getByFilter);
 
 module.exports = router;

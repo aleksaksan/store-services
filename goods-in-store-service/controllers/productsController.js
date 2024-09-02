@@ -4,9 +4,10 @@ class ProductsController {
   async create (req, res) {
     try {
       const { plu, name } = req.body;
-      console.log(plu, name)
+      console.log( plu, name )
       const product = await Product.create({ plu, name });
       return res.status(201).json(product);
+      res.send(res.query)
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
