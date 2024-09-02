@@ -1,4 +1,4 @@
-const { Product } = require('../models/models');
+const { Product, Stock } = require('../models/models');
 
 class ProductsController {
   async create (req, res) {
@@ -7,7 +7,6 @@ class ProductsController {
       console.log( plu, name )
       const product = await Product.create({ plu, name });
       return res.status(201).json(product);
-      res.send(res.query)
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -18,15 +17,17 @@ class ProductsController {
       const { plu, name } = req.query;
       const filter = {};
 
-      if (plu) {
+      if (plu && name) {
+        throw new Error('query parametr is wrong or void');
+      } else if (plu) {
         filter.plu = plu;
       } else if (name) {
         filter.name = name
       } else {
-        res.status(500).json({ error: 'query parametr is wrong or void'})
+        throw new Error('query parametr is wrong or void');
       };
 
-      const product = await Product.findAll(({ where: filter, include: [Product] }));
+      const product = await Product.findAll(({ where: filter, include: [Stock] }));
 
     
       return res.status(200).json(product);

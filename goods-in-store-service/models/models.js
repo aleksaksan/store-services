@@ -27,8 +27,8 @@ const Stock = sequelize.define('stock', {
   }
 );
 
-Stock.hasMany(Product);
-Stock.hasOne(Store);
+Product.hasMany(Stock);
+Store.hasOne(Stock);
 
 module.exports = {
   Product,
