@@ -1,5 +1,6 @@
 const Router = require('express');
 const router = new Router();
+const { create, editQuantity } = require('../controllers/stockController');
 
 // - Создание остатка
 // - Увеличение остатка
@@ -10,8 +11,8 @@ const router = new Router();
 //     - количество остатков на полке (с-по)
 //     - количество остатков в заказе (с-по)
 
-router.post('/', );
-router.patch('/:id', );
+router.post('/', create);
+router.patch('/:id', editQuantity);
 router.get('/', );
 
 module.exports = router;

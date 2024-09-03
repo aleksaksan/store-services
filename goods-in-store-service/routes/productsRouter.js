@@ -1,14 +1,14 @@
 const Router = require('express');
 const router = new Router();
-const ProductsController = require('../controllers/productsController');
+const { create, getByFilter } = require('../controllers/productsController');
 
 // - Создание товара
 // - Получение товаров по фильтрам
 //     - name
 //     - plu
 
-router.post('/', ProductsController.create);
+router.post('/', create);
 
-router.get('/', ProductsController.getByFilter);
+router.get('/', getByFilter);
 
 module.exports = router;
