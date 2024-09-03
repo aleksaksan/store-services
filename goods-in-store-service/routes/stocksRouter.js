@@ -1,6 +1,6 @@
 const Router = require('express');
 const router = new Router();
-const { create, editQuantity } = require('../controllers/stockController');
+const { create, editQuantity, getStock } = require('../controllers/stockController');
 
 // - Создание остатка
 // - Увеличение остатка
@@ -13,6 +13,6 @@ const { create, editQuantity } = require('../controllers/stockController');
 
 router.post('/', create);
 router.patch('/:id', editQuantity);
-router.get('/', );
+router.get('/', getStock);
 
 module.exports = router;

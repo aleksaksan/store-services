@@ -10,28 +10,29 @@ const Product = sequelize.define('product', {
   }
 );
 
-const Store = sequelize.define('store', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  name: { type: DataTypes.STRING, allowNull: false },
-  }, { 
-    timestamps: false 
-  }
-);
+// const Store = sequelize.define('store', {
+//   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+//   name: { type: DataTypes.STRING, allowNull: false },
+//   }, { 
+//     timestamps: false 
+//   }
+// );
 
 const Stock = sequelize.define('stock', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  store_quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
-  order_quantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+  storeQuantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+  orderQuantity: { type: DataTypes.INTEGER, defaultValue: 0 },
+  storeId: { type: DataTypes.INTEGER, allowNull: false }
   }, { 
     timestamps: false 
   }
 );
 
 Product.hasMany(Stock);
-Store.hasOne(Stock);
+// Store.hasMany(Stock);
 
 module.exports = {
   Product,
-  Store,
+  // Store,
   Stock,
 };
